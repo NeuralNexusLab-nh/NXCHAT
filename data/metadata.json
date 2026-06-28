@@ -1,0 +1,8 @@
+{
+  "admin": {
+    "name": "ADMIN ROOM",
+    "expiry": 9999999999999,
+    "maxMessages": 999999999999999,
+    "aiEnabled": false
+  }
+}

@@ -50,10 +50,10 @@
         .logo {
             font-size: 24px;
             color: var(--neon-green);
-            text-decoration: text-shadow: 0 0 10px var(--neon-green);
+            text-decoration: none;
+            text-shadow: 0 0 10px var(--neon-green);
             letter-spacing: 2px;
             transition: all 0.3s;
-            text-decoration: none;
         }
         .logo:hover {
             color: var(--cyber-blue);
@@ -185,14 +185,16 @@
             cursor: pointer;
             user-select: none;
             color: var(--cyber-blue);
-            font-size: 15px;
+            font-size: 14px;
             margin-top: 15px;
+            line-height: 1.4;
         }
         .checkbox-group input {
             cursor: pointer;
             accent-color: var(--neon-green);
             width: 18px;
             height: 18px;
+            flex-shrink: 0;
         }
         .submit-btn {
             width: 100%;
@@ -310,7 +312,7 @@
             <div class="form-group">
                 <label class="checkbox-group">
                     <input type="checkbox" id="aiEnabled">
-                    <span data-i18n="label_ai">ACTIVATE INTEGRATED AI PARTICIPANT</span>
+                    <span data-i18n="label_ai">ACTIVATE INTEGRATED AI PARTICIPANT (AI JOINS EVERY 5 MESSAGES OR VIA @AI)</span>
                 </label>
             </div>
 
@@ -335,7 +337,7 @@
                 label_room_name: "ROOM NAME (MAX 20)",
                 label_room_id: "4-CHARACTER ROOM ID (ALPHANUMERIC)",
                 label_duration: "DURATION",
-                label_ai: "ACTIVATE INTEGRATED AI PARTICIPANT",
+                label_ai: "ACTIVATE INTEGRATED AI PARTICIPANT (AI JOINS EVERY 5 MESSAGES OR VIA @AI)",
                 btn_initialize: "INITIALIZE SOCKET",
                 pow_computing: "RUNNING CRYPTOGRAPHIC PROOF OF WORK...",
                 footer_rights: "All rights reserved.",
@@ -349,7 +351,7 @@
                 label_room_name: "聊天室名稱 (最多20字)",
                 label_room_id: "4位數代碼 (限英文字母或數字)",
                 label_duration: "存續時間",
-                label_ai: "啟用 AI 協同通訊功能",
+                label_ai: "啟用 AI 協同通訊功能 (每 5 條訊息自動發言一次，或使用 @ai 強制呼叫)",
                 btn_initialize: "初始化實體通訊",
                 pow_computing: "正在執行瀏覽器真人算力驗證 (PoW)...",
                 footer_rights: "版權所有。",
@@ -363,7 +365,7 @@
                 label_room_name: "ルーム名 (最大20文字)",
                 label_room_id: "4桁のルームID (英数字のみ)",
                 label_duration: "制限時間",
-                label_ai: "チャットAIのアクティベート",
+                label_ai: "チャットAIのアクティベート (5通ごとに自動発言、または @ai で強制呼び出し)",
                 btn_initialize: "通信路を初期化",
                 pow_computing: "ブラウザ人間証明(Proof of Work)を実行中...",
                 footer_rights: "不許複製・禁無断転載。",

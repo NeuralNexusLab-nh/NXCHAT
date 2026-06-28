@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NXCHAT // HOME</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-green: #00ff00;
+            --cyber-blue: #00f0ff;
+            --dark-bg: #050505;
+            --panel-bg: #0d0d0d;
+            --text-color: #c0c0c0;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Share Tech Mono', monospace;
+        }
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+        body::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 99999;
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+        }
+        header {
+            border-bottom: 2px solid var(--neon-green);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--panel-bg);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.15);
+        }
+        .logo {
+            font-size: 24px;
+            color: var(--neon-green);
+            text-decoration: none;
+            text-shadow: 0 0 10px var(--neon-green);
+            letter-spacing: 2px;
+            transition: all 0.3s;
+        }
+        .logo:hover {
+            color: var(--cyber-blue);
+            text-shadow: 0 0 15px var(--cyber-blue);
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .nav-btn {
+            color: var(--cyber-blue);
+            text-decoration: none;
+            border: 1px solid var(--cyber-blue);
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            background: transparent;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .nav-btn:hover {
+            background: rgba(0, 240, 255, 0.1);
+            box-shadow: 0 0 15px var(--cyber-blue);
+            transform: translateY(-2px);
+        }
+        .lang-container {
+            position: relative;
+            display: inline-block;
+        }
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        .lang-btn:hover {
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 40px;
+            background: var(--panel-bg);
+            border: 1px solid var(--neon-green);
+            border-radius: 4px;
+            z-index: 1000;
+            min-width: 120px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+        }
+        .lang-dropdown button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .lang-dropdown button:hover {
+            background: rgba(0, 255, 0, 0.2);
+            color: var(--neon-green);
+        }
+        .main-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .hero-title {
+            font-size: 72px;
+            color: var(--neon-green);
+            text-shadow: 0 0 20px var(--neon-green);
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+            animation: glitch 1s linear infinite alternate;
+        }
+        @keyframes glitch {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) }
+            40% { transform: translate(-2px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(2px, -2px) }
+            100% { transform: translate(0) }
+        }
+        .hero-desc {
+            font-size: 18px;
+            color: var(--cyber-blue);
+            margin-bottom: 40px;
+            text-shadow: 0 0 5px rgba(0, 240, 255, 0.5);
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        .btn-group {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            width: 100%;
+            max-width: 500px;
+        }
+        .action-btn {
+            flex: 1;
+            padding: 18px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .btn-create {
+            background: transparent;
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+        }
+        .btn-create:hover {
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 0 0 20px var(--neon-green);
+            transform: scale(1.05);
+        }
+        .btn-join {
+            background: transparent;
+            border: 2px solid var(--cyber-blue);
+            color: var(--cyber-blue);
+        }
+        .btn-join:hover {
+            background: rgba(0, 240, 255, 0.1);
+            box-shadow: 0 0 20px var(--cyber-blue);
+            transform: scale(1.05);
+        }
+        footer {
+            border-top: 1px solid rgba(0, 255, 0, 0.3);
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            background: var(--panel-bg);
+            color: rgba(192, 192, 192, 0.6);
+        }
+        footer a {
+            color: var(--neon-green);
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-shadow: 0 0 5px var(--neon-green);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">NXCHAT</a>
+        <div class="nav-right">
+            <a href="/about" class="nav-btn" data-i18n="nav_about">About</a>
+            <div class="lang-container">
+                <button class="lang-btn" onclick="toggleLang()">
+                    <span>🌐</span>
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <button onclick="changeLang('en')">English</button>
+                    <button onclick="changeLang('zh')">繁體中文</button>
+                    <button onclick="changeLang('ja')">日本語</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <h1 class="hero-title">NXCHAT</h1>
+        <p class="hero-desc" data-i18n="hero_desc">EPHEMERAL // SECURE // DECENTRALIZED VIBES. NO ACCOUNTS. NO TRACE. CHATROOMS SELF-DESTRUCT AUTOMATICALLY.</p>
+        <div class="btn-group">
+            <a href="/create" class="action-btn btn-create" data-i18n="btn_create">Create Room</a>
+            <a href="/join" class="action-btn btn-join" data-i18n="btn_join">Join Room</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 NeuralNexusLab. <span data-i18n="footer_rights">All rights reserved.</span></p>
+    </footer>
+
+    <script>
+        const i18n = {
+            en: {
+                nav_about: "About",
+                hero_desc: "EPHEMERAL // SECURE // DECENTRALIZED VIBES. NO ACCOUNTS. NO TRACE. CHATROOMS SELF-DESTRUCT AUTOMATICALLY.",
+                btn_create: "Create Room",
+                btn_join: "Join Room",
+                footer_rights: "All rights reserved."
+            },
+            zh: {
+                nav_about: "關於專案",
+                hero_desc: "極簡 // 安全 // 數位龐克通訊。免註冊、不留痕跡，時間一到聊天室與紀錄即刻徹底銷毀。",
+                btn_create: "創建聊天室",
+                btn_join: "加入聊天室",
+                footer_rights: "版權所有。"
+            },
+            ja: {
+                nav_about: "アバウト",
+                hero_desc: "刹那 // 安全 // サイバーパンク。登録不要、ログ不要。時間制限で自動消滅する使い捨てチャットシステム。",
+                btn_create: "ルーム作成",
+                btn_join: "ルーム参加",
+                footer_rights: "不許複製・禁無断転載。"
+            }
+        };
+
+        function toggleLang() {
+            const dropdown = document.getElementById('langDropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function changeLang(lang) {
+            localStorage.setItem('nxchat_lang', lang);
+            applyLanguage(lang);
+            document.getElementById('langDropdown').style.display = 'none';
+        }
+
+        function applyLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[lang] && i18n[lang][key]) {
+                    el.textContent = i18n[lang][key];
+                }
+            });
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.lang-btn') && !event.target.matches('.lang-btn *')) {
+                document.getElementById('langDropdown').style.display = 'none';
+            }
+        }
+
+        const initialLang = localStorage.getItem('nxchat_lang') || 'en';
+        applyLanguage(initialLang);
+    </script>
+</body>
+</html>
